@@ -1,6 +1,7 @@
 import express from 'express'
 import bodyParser from 'body-parser'
 import mysql from 'mysql'
+import cors from 'cors'
 const app = express()
 
 let connection = mysql.createConnection({
@@ -11,18 +12,8 @@ let connection = mysql.createConnection({
 
 });
 
-let usuarios = [
 
-    {
-        id: 1,
-        nome: 'Marcio'
-    },
-    {
-        id: 2,
-        nome: 'Rafael'
-    },
-
-]
+app.use(cors())
 
 app.use(bodyParser.json())
 
@@ -104,8 +95,8 @@ app.delete('/usuario/:id', (req, res) => {
 
 })
 
-app.listen(3000, () => {
+app.listen(3001, () => {
 
-    console.log('Servidor rodando na porta 3000')
+    console.log('Servidor rodando na porta 3001')
 
 })
